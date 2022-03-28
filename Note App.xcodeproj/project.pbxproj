@@ -12,8 +12,11 @@
 		90A6838C27F1756A0092DF4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90A6838B27F1756A0092DF4E /* Assets.xcassets */; };
 		90A6838F27F1756A0092DF4E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90A6838E27F1756A0092DF4E /* Preview Assets.xcassets */; };
 		90A6839627F176850092DF4E /* NewNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6839527F176850092DF4E /* NewNoteView.swift */; };
-		90A6839827F177270092DF4E /* DummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6839727F177270092DF4E /* DummyData.swift */; };
+		90A6839827F177270092DF4E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6839727F177270092DF4E /* Note.swift */; };
 		90A6839A27F17D0C0092DF4E /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6839927F17D0C0092DF4E /* TextArea.swift */; };
+		90A6839D27F181C30092DF4E /* APIFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A6839C27F181C30092DF4E /* APIFunctions.swift */; };
+		90A683A027F1821E0092DF4E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 90A6839F27F1821E0092DF4E /* Alamofire */; };
+		90A683A627F188520092DF4E /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A683A527F188520092DF4E /* NoteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,8 +26,10 @@
 		90A6838B27F1756A0092DF4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90A6838E27F1756A0092DF4E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		90A6839527F176850092DF4E /* NewNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteView.swift; sourceTree = "<group>"; };
-		90A6839727F177270092DF4E /* DummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyData.swift; sourceTree = "<group>"; };
+		90A6839727F177270092DF4E /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		90A6839927F17D0C0092DF4E /* TextArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
+		90A6839C27F181C30092DF4E /* APIFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFunctions.swift; sourceTree = "<group>"; };
+		90A683A527F188520092DF4E /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90A683A027F1821E0092DF4E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,13 +63,13 @@
 		90A6838627F1756A0092DF4E /* Note App */ = {
 			isa = PBXGroup;
 			children = (
-				90A6838727F1756A0092DF4E /* Note_AppApp.swift */,
-				90A6838927F1756A0092DF4E /* ContentView.swift */,
-				90A6839527F176850092DF4E /* NewNoteView.swift */,
-				90A6839927F17D0C0092DF4E /* TextArea.swift */,
+				90A683A427F1824E0092DF4E /* App */,
+				90A683A327F182410092DF4E /* Model */,
+				90A683A227F182320092DF4E /* ViewModel */,
+				90A683A127F182260092DF4E /* View */,
+				90A6839B27F181A70092DF4E /* Services */,
 				90A6838B27F1756A0092DF4E /* Assets.xcassets */,
 				90A6838D27F1756A0092DF4E /* Preview Content */,
-				90A6839727F177270092DF4E /* DummyData.swift */,
 			);
 			path = "Note App";
 			sourceTree = "<group>";
@@ -74,6 +80,48 @@
 				90A6838E27F1756A0092DF4E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		90A6839B27F181A70092DF4E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				90A6839C27F181C30092DF4E /* APIFunctions.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		90A683A127F182260092DF4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				90A6838927F1756A0092DF4E /* ContentView.swift */,
+				90A6839927F17D0C0092DF4E /* TextArea.swift */,
+				90A6839527F176850092DF4E /* NewNoteView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		90A683A227F182320092DF4E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				90A683A527F188520092DF4E /* NoteViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		90A683A327F182410092DF4E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				90A6839727F177270092DF4E /* Note.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		90A683A427F1824E0092DF4E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				90A6838727F1756A0092DF4E /* Note_AppApp.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,6 +140,9 @@
 			dependencies = (
 			);
 			name = "Note App";
+			packageProductDependencies = (
+				90A6839F27F1821E0092DF4E /* Alamofire */,
+			);
 			productName = "Note App";
 			productReference = 90A6838427F1756A0092DF4E /* Note App.app */;
 			productType = "com.apple.product-type.application";
@@ -120,6 +171,9 @@
 				Base,
 			);
 			mainGroup = 90A6837B27F1756A0092DF4E;
+			packageReferences = (
+				90A6839E27F1821E0092DF4E /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 90A6838527F1756A0092DF4E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -146,10 +200,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90A6839827F177270092DF4E /* DummyData.swift in Sources */,
+				90A683A627F188520092DF4E /* NoteViewModel.swift in Sources */,
+				90A6839827F177270092DF4E /* Note.swift in Sources */,
 				90A6838A27F1756A0092DF4E /* ContentView.swift in Sources */,
 				90A6839A27F17D0C0092DF4E /* TextArea.swift in Sources */,
 				90A6839627F176850092DF4E /* NewNoteView.swift in Sources */,
+				90A6839D27F181C30092DF4E /* APIFunctions.swift in Sources */,
 				90A6838827F1756A0092DF4E /* Note_AppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +411,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		90A6839E27F1821E0092DF4E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		90A6839F27F1821E0092DF4E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90A6839E27F1821E0092DF4E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 90A6837C27F1756A0092DF4E /* Project object */;
 }

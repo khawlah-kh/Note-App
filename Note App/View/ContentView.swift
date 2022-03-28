@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewModel = NoteViewModel()
     var body: some View {
         NavigationView{
             VStack{
-                List(notes,id:\.self){note in
+                List(viewModel.notes,id:\.self){note in
                     Text(note.note)
                 }
-        Text("Hello, world!")
-            .padding()
+     
             
             }
             .navigationTitle("Notes")
@@ -32,6 +32,7 @@ struct ContentView: View {
                 }
             }
         }
+
     }
 }
 
