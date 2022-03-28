@@ -9,8 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        NavigationView{
+            VStack{
+                List(notes,id:\.self){note in
+                    Text(note.note)
+                }
         Text("Hello, world!")
             .padding()
+            
+            }
+            .navigationTitle("Notes")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                 
+                    NavigationLink("Add Note") {
+                        NewNoteView()
+                    }
+                      
+                        
+                    
+
+                }
+            }
+        }
     }
 }
 
