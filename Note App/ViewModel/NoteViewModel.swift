@@ -14,7 +14,10 @@ class NoteViewModel : ObservableObject{
     let apiFunctions = APIFunctions.shared
     init(){
         apiFunctions.fetchNotes { notes in
-            self.notes=notes
+            DispatchQueue.main.async {
+                self.notes=notes
+            }
+           
         }
         
     }
