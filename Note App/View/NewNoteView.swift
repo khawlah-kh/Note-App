@@ -12,7 +12,9 @@ struct NewNoteView: View {
     @State var noteTitle : String = ""
     @State var noteText : String = ""
     var navigationTitle = "Add Note"
-    
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var viewModel : NoteViewModel
+
     init(note:Note? = nil){
         if let note = note {
             _noteTitle = State(initialValue:note.title)
@@ -38,24 +40,36 @@ struct NewNoteView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack{
-                        Button {
-                            
-                        } label: {
-                            Text("Delete")
-                                .foregroundColor(.red)
+                        if let note = note {
+                            Button {
+                                    APIFunctions.shared.deleteNote(id:note._id) { notes in
+                                        viewModel.notes = notes
+                                }
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Text("Delete")
+                                    .foregroundColor(.red)
+                            }
                         }
+              
                         Button {
                             
                             if let note = note {
-                                print("update note")
-                                print("💜")
+                                APIFunctions.shared.updateNote(id: note._id, date:Date().description, title:noteTitle, note: noteText){notes in
+                                    viewModel.notes = notes
+                                    
+                                }
                             }
 
                             else{
-                                print(note)
-                            APIFunctions.shared.addNote(date: Date().description, title: noteTitle, note: noteText)
-                                print("🤍")
+                            APIFunctions.shared.addNote(date: Date().description, title: noteTitle, note: noteText){notes in
+                                
+                                viewModel.notes = notes
                             }
+                            }
+                            
+                            presentationMode.wrappedValue.dismiss()
+                            
                         } label: {
                             Text("Save")
                               

@@ -12,15 +12,15 @@ class NoteViewModel : ObservableObject{
     
     @Published var notes : [Note] = []
     let apiFunctions = APIFunctions.shared
-//    init(){
-//        apiFunctions.fetchNotes { notes in
-//            DispatchQueue.main.async {
-//                self.notes=notes
-//            }
-//
-//        }
-//
-//    }
+    init(){
+        apiFunctions.fetchNotes { notes in
+            DispatchQueue.main.async {
+                self.notes=notes
+            }
+
+        }
+
+    }
     
     
     

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel = NoteViewModel()
+    @EnvironmentObject var viewModel : NoteViewModel
     var body: some View {
         NavigationView{
             VStack{
@@ -38,12 +38,12 @@ struct ContentView: View {
                 }
             }
         }
-        .onAppear {
-                        APIFunctions.shared.fetchNotes { notes in
-                            viewModel.notes = notes
-                            print("👍🏻")
-                        }
-        }
+//        .onAppear {
+//                        APIFunctions.shared.fetchNotes { notes in
+//                            viewModel.notes = notes
+//                            print("👍🏻")
+//                        }
+//        }
 
 
     }

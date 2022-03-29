@@ -10,12 +10,12 @@ import Alamofire
 
 class APIFunctions{
     static let shared = APIFunctions()
-    //Using Alamofire
-    func fetchNotes(completion:@escaping([Note])->()){
+    typealias completion = ([Note])->()
+    func fetchNotes(completion:@escaping completion){
         var notes :[Note] = []
-
+        
         AF.request("http://192.168.100.32:8081/fetch").response{ response in
-
+            
             let decoder = JSONDecoder()
             if let data = response.data {
                 do{
@@ -26,48 +26,36 @@ class APIFunctions{
                 }
                 completion(notes)
             }
-
-
         }
-
-
-
     }
     
     
-    func addNote(date:String,title:String,note:String){
-
-        AF.request("http://192.168.100.32:8081/create",method: .post,encoding: URLEncoding.httpBody,headers: ["date":date,"title":title,"note":note]).responseJSON { response  in
-            
-            
-        }
-  
+    func addNote(date:String,title:String,note:String,completion:@escaping completion){
         
+        AF.request("http://192.168.100.32:8081/create",method: .post,encoding: URLEncoding.httpBody,headers: ["date":date,"title":title,"note":note]).responseJSON { response  in
+            self.fetchNotes { notes in
+                completion(notes)
+            }
+        }
     }
     
-    //Using URLSession
-//    func fetchNotes(completion:@escaping([Note])->()){
-//            let url = URL(string: "http://192.168.100.32:8081/fetch")!
-//            let request = URLRequest(url: url)
-//            URLSession.shared.dataTask(with:request) { data, response, error in
-//
-//                if let data = data {
-//                    var notes :[Note] = []
-//                    let decoder = JSONDecoder()
-//                    do{
-//                         notes = try decoder.decode([Note].self, from: data)
-//
-//                    }
-//                    catch{
-//                        print("Decoding Error")
-//                    }
-//
-//                    completion(notes)
-//
-//
-//                }
-//            }.resume()
-//
-//        }
+    func updateNote(id:String,date:String,title:String,note:String,completion:@escaping completion){
+        
+        AF.request("http://192.168.100.32:8081/update",method: .post,encoding: URLEncoding.httpBody,headers: ["id":id,"date":date,"title":title,"note":note]).responseJSON { response  in
+            
+            self.fetchNotes { notes in
+                completion(notes)
+            }
+        }
+    }
     
+    func deleteNote(id:String,completion:@escaping completion){
+        
+        AF.request("http://192.168.100.32:8081/delete",method: .post,encoding: URLEncoding.httpBody,headers: ["id":id]).responseJSON { response  in
+            
+            self.fetchNotes { notes in
+                completion(notes)
+            }
+        }
+    }
 }
