@@ -34,6 +34,17 @@ class APIFunctions{
 
     }
     
+    
+    func addNote(date:String,title:String,note:String){
+
+        AF.request("http://192.168.100.32:8081/create",method: .post,encoding: URLEncoding.httpBody,headers: ["date":date,"title":title,"note":note]).responseJSON { response  in
+            
+            
+        }
+  
+        
+    }
+    
     //Using URLSession
 //    func fetchNotes(completion:@escaping([Note])->()){
 //            let url = URL(string: "http://192.168.100.32:8081/fetch")!

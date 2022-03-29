@@ -13,7 +13,13 @@ struct ContentView: View {
         NavigationView{
             VStack{
                 List(viewModel.notes,id:\.self){note in
-                    Text(note.note)
+                    NavigationLink {
+                        NewNoteView(note:note)
+                    } label: {
+                        Text(note.note)
+                    }
+
+                   
                 }
      
             
@@ -32,6 +38,13 @@ struct ContentView: View {
                 }
             }
         }
+        .onAppear {
+                        APIFunctions.shared.fetchNotes { notes in
+                            viewModel.notes = notes
+                            print("👍🏻")
+                        }
+        }
+
 
     }
 }
