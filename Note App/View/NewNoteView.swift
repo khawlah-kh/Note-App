@@ -38,46 +38,17 @@ struct NewNoteView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack{
-                        if let note = note {
+                        if let _ = note {
                             Button {
-                                APIFunctions.shared.deleteNote(id:note._id) { notes in
-                                    viewModel.notes = notes
-                                }
-                                presentationMode.wrappedValue.dismiss()
-                            } label: {
-                                Text("Delete")
-                                    .foregroundColor(.red)
+                                handelDelete()
                             }
+                        label: {
+                            Text("Delete")
+                                .foregroundColor(.red)
                         }
-                        
+                        }
                         Button {
-                            
-                            guard noteTitle != "" || noteText != "" else {
-                                if note != nil {
-                                    APIFunctions.shared.deleteNote(id:note!._id) { notes in
-                                        viewModel.notes = notes
-                                    }
-                                }
-                                presentationMode.wrappedValue.dismiss()
-                                return
-                            }
-                            if let note = note {
-                                APIFunctions.shared.updateNote(id: note._id, title:noteTitle, note: noteText){notes in
-                                    viewModel.notes = notes
-                                    
-                                }
-                            }
-                            
-                            else{
-                                
-                                APIFunctions.shared.addNote( title: noteTitle, note: noteText){notes in
-                                    
-                                    viewModel.notes = notes
-                                }
-                            }
-                            
-                            presentationMode.wrappedValue.dismiss()
-                            
+                            handelSave()
                         } label: {
                             Text("Save")
                             
@@ -86,6 +57,41 @@ struct NewNoteView: View {
                     }
                 }
             }
+    }
+    
+    func handelSave(){
+        
+        guard noteTitle != "" || noteText != "" else {
+            if note != nil {
+                APIFunctions.shared.deleteNote(id:note!._id) { notes in
+                    viewModel.notes = notes
+                }
+            }
+            presentationMode.wrappedValue.dismiss()
+            return
+        }
+        if let note = note {
+            APIFunctions.shared.updateNote(id: note._id, title:noteTitle, note: noteText){notes in
+                viewModel.notes = notes
+            }
+        }
+        
+        else{
+            
+            APIFunctions.shared.addNote( title: noteTitle, note: noteText){notes in
+                viewModel.notes = notes
+            }
+        }
+        
+        presentationMode.wrappedValue.dismiss()
+        
+        
+    }
+    func handelDelete(){
+        APIFunctions.shared.deleteNote(id:note!._id) { notes in
+            viewModel.notes = notes
+        }
+        presentationMode.wrappedValue.dismiss()
     }
 }
 struct NewNoteView_Previews: PreviewProvider {

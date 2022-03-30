@@ -67,17 +67,4 @@ class APIFunctions{
         return date
     }
     
-    
-    
-
-    
-    
-//    var detailedTimestampString: String {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "h:mm a · MM/dd/yyyy"
-//        return formatter.string(from: timestamp.dateValue())
-//    }
-//
-    
-    
 }

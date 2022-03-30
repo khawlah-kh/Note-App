@@ -46,6 +46,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		902D3D4827F437A50097D6F5 /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				902D3D4427F421A40097D6F5 /* NoteCell.swift */,
+				90A6839927F17D0C0092DF4E /* TextArea.swift */,
+			);
+			path = "Custom View";
+			sourceTree = "<group>";
+		};
 		90A6837B27F1756A0092DF4E = {
 			isa = PBXGroup;
 			children = (
@@ -96,9 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				90A6838927F1756A0092DF4E /* ContentView.swift */,
-				90A6839927F17D0C0092DF4E /* TextArea.swift */,
 				90A6839527F176850092DF4E /* NewNoteView.swift */,
-				902D3D4427F421A40097D6F5 /* NoteCell.swift */,
+				902D3D4827F437A50097D6F5 /* Custom View */,
 			);
 			path = View;
 			sourceTree = "<group>";

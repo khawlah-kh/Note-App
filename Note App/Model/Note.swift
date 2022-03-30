@@ -14,7 +14,7 @@ struct Note :Hashable,Codable{
     var title : String
     var date : String
     var note : String
-      
+    
 }
 
 let notes :[Note] = [.init(_id: "1", title: "note1", date: "28 Mar", note: "My first note"),

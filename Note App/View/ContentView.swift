@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var viewModel : NoteViewModel
+    
     var body: some View {
         NavigationView{
             VStack{
@@ -23,14 +24,13 @@ struct ContentView: View {
             .navigationTitle("Notes")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                 
+                    
                     NavigationLink("Add Note") {
                         NewNoteView()
                     }
                 }
             }
         }
-
     }
 }
 
