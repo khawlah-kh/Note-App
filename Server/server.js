@@ -81,7 +81,6 @@ res.send("Updated!")
 
 
 
-// http://192.168.100.32:8081/(service name)
-var server = app.listen(8081,"192.168.100.32",()=>{
+var server = app.listen(8081,"MyIPAddress",()=>{
     console.log("Server is running")
 })
