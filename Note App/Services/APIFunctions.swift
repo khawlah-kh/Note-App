@@ -14,7 +14,7 @@ class APIFunctions{
     func fetchNotes(completion:@escaping completion){
         var notes :[Note] = []
         
-        AF.request("http://192.168.100.32:8081/fetch").response{ response in
+        AF.request("http://MyIPAddresss:8081/fetch").response{ response in
             
             let decoder = JSONDecoder()
             if let data = response.data {
@@ -32,7 +32,7 @@ class APIFunctions{
     
     func addNote(title:String,note:String,completion:@escaping completion){
         
-        AF.request("http://192.168.100.32:8081/create",method: .post,encoding: URLEncoding.httpBody,headers: ["date":noteDate,"title":title,"note":note]).responseJSON { response  in
+        AF.request("http://MyIPAddresss:8081/create",method: .post,encoding: URLEncoding.httpBody,headers: ["date":noteDate,"title":title,"note":note]).responseJSON { response  in
             self.fetchNotes { notes in
                 completion(notes)
             }
@@ -41,7 +41,7 @@ class APIFunctions{
     
     func updateNote(id:String,title:String,note:String,completion:@escaping completion){
         
-        AF.request("http://192.168.100.32:8081/update",method: .post,encoding: URLEncoding.httpBody,headers: ["id":id,"date":noteDate,"title":title,"note":note]).responseJSON { response  in
+        AF.request("http://MyIPAddresss:8081/update",method: .post,encoding: URLEncoding.httpBody,headers: ["id":id,"date":noteDate,"title":title,"note":note]).responseJSON { response  in
             
             self.fetchNotes { notes in
                 completion(notes)
@@ -51,7 +51,7 @@ class APIFunctions{
     
     func deleteNote(id:String,completion:@escaping completion){
         
-        AF.request("http://192.168.100.32:8081/delete",method: .post,encoding: URLEncoding.httpBody,headers: ["id":id]).responseJSON { response  in
+        AF.request("http://MyIPAddresss:8081/delete",method: .post,encoding: URLEncoding.httpBody,headers: ["id":id]).responseJSON { response  in
             
             self.fetchNotes { notes in
                 completion(notes)
