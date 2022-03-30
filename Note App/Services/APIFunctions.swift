@@ -30,18 +30,18 @@ class APIFunctions{
     }
     
     
-    func addNote(date:String,title:String,note:String,completion:@escaping completion){
+    func addNote(title:String,note:String,completion:@escaping completion){
         
-        AF.request("http://192.168.100.32:8081/create",method: .post,encoding: URLEncoding.httpBody,headers: ["date":date,"title":title,"note":note]).responseJSON { response  in
+        AF.request("http://192.168.100.32:8081/create",method: .post,encoding: URLEncoding.httpBody,headers: ["date":noteDate,"title":title,"note":note]).responseJSON { response  in
             self.fetchNotes { notes in
                 completion(notes)
             }
         }
     }
     
-    func updateNote(id:String,date:String,title:String,note:String,completion:@escaping completion){
+    func updateNote(id:String,title:String,note:String,completion:@escaping completion){
         
-        AF.request("http://192.168.100.32:8081/update",method: .post,encoding: URLEncoding.httpBody,headers: ["id":id,"date":date,"title":title,"note":note]).responseJSON { response  in
+        AF.request("http://192.168.100.32:8081/update",method: .post,encoding: URLEncoding.httpBody,headers: ["id":id,"date":noteDate,"title":title,"note":note]).responseJSON { response  in
             
             self.fetchNotes { notes in
                 completion(notes)
@@ -58,4 +58,26 @@ class APIFunctions{
             }
         }
     }
+    
+    
+    var noteDate : String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.string(from: Date())
+        return date
+    }
+    
+    
+    
+
+    
+    
+//    var detailedTimestampString: String {
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "h:mm a · MM/dd/yyyy"
+//        return formatter.string(from: timestamp.dateValue())
+//    }
+//
+    
+    
 }

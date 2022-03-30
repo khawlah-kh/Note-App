@@ -16,13 +16,9 @@ struct ContentView: View {
                     NavigationLink {
                         NewNoteView(note:note)
                     } label: {
-                        Text(note.note)
+                        NoteCell(note: note)
                     }
-
-                   
                 }
-     
-            
             }
             .navigationTitle("Notes")
             .toolbar {
@@ -31,20 +27,9 @@ struct ContentView: View {
                     NavigationLink("Add Note") {
                         NewNoteView()
                     }
-                      
-                        
-                    
-
                 }
             }
         }
-//        .onAppear {
-//                        APIFunctions.shared.fetchNotes { notes in
-//                            viewModel.notes = notes
-//                            print("👍🏻")
-//                        }
-//        }
-
 
     }
 }

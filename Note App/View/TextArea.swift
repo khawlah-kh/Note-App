@@ -12,7 +12,7 @@ struct TextArea: View {
     
     var  placeholder : String {
         if note.isEmpty{
-            return "Note . . ."
+            return "Type something . . ."
         }
         return ""
     }
