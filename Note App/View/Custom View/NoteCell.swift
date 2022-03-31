@@ -18,7 +18,7 @@ struct NoteCell: View {
             Text(note.note)
                 .font(.title3)
                 .lineLimit(1)
-            Text(note.date)
+            Text(note.timestampString)
                 .foregroundColor(.gray)
         }
     }

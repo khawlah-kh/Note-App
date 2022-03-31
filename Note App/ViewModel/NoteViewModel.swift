@@ -16,9 +16,9 @@ class NoteViewModel : ObservableObject{
         apiFunctions.fetchNotes { notes in
             DispatchQueue.main.async {
                 self.notes=notes
+                
             }
         }
        
     }
-
 }

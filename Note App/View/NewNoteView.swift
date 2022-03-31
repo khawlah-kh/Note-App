@@ -27,9 +27,9 @@ struct NewNoteView: View {
     var body: some View {
         VStack{
             TextField("Note Title", text:$noteTitle)
-                .padding()
-                .textFieldStyle(.roundedBorder)
-                .padding()
+                .font(.bold(.title)())
+                .padding(.horizontal)
+                .padding(.top)
             
             TextArea(note: $noteText)
                 .frame(width: UIScreen.main.bounds.width-24, height: UIScreen.main.bounds.height/2)
@@ -60,7 +60,6 @@ struct NewNoteView: View {
     }
     
     func handelSave(){
-        
         guard noteTitle != "" || noteText != "" else {
             if note != nil {
                 APIFunctions.shared.deleteNote(id:note!._id) { notes in
