@@ -62,7 +62,11 @@ struct NewNoteView: View {
     func handelSave(){
         guard noteTitle != "" || noteText != "" else {
             if note != nil {
-                APIFunctions.shared.deleteNote(id:note!._id) { notes in
+//                APIFunctions.shared.deleteNote(id:note!._id) { notes in
+//                    viewModel.notes = notes
+//                }
+                
+                APIFunctions.shared.deleteNoteUsingURLSession(id:note!._id) { notes in
                     viewModel.notes = notes
                 }
             }
@@ -70,16 +74,23 @@ struct NewNoteView: View {
             return
         }
         if let note = note {
-            APIFunctions.shared.updateNote(id: note._id, title:noteTitle, note: noteText){notes in
+//            APIFunctions.shared.updateNote(id: note._id, title:noteTitle, note: noteText){notes in
+//                viewModel.notes = notes
+//            }
+            APIFunctions.shared.updateNoteUsingURLSession(id: note._id, title:noteTitle, note: noteText){notes in
                 viewModel.notes = notes
             }
         }
         
         else{
             
-            APIFunctions.shared.addNote( title: noteTitle, note: noteText){notes in
+//            APIFunctions.shared.addNote( title: noteTitle, note: noteText){notes in
+//                viewModel.notes = notes
+//            }
+            APIFunctions.shared.addNoteUsingURLSession( title: noteTitle, note: noteText){notes in
                 viewModel.notes = notes
             }
+            
         }
         
         presentationMode.wrappedValue.dismiss()
@@ -87,9 +98,13 @@ struct NewNoteView: View {
         
     }
     func handelDelete(){
-        APIFunctions.shared.deleteNote(id:note!._id) { notes in
+//        APIFunctions.shared.deleteNote(id:note!._id) { notes in
+//            viewModel.notes = notes
+//        }
+        APIFunctions.shared.deleteNoteUsingURLSession(id:note!._id) { notes in
             viewModel.notes = notes
         }
+
         presentationMode.wrappedValue.dismiss()
     }
 }
