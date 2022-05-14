@@ -14,7 +14,7 @@ class APIFunctions{
     func fetchNotes(completion:@escaping completion){
         var notes :[Note] = []
         
-        AF.request("http://192.168.100.32:8081/fetch").response{ response in
+        AF.request("http://MyIPAddress/fetch").response{ response in
             
             let decoder = JSONDecoder()
             if let data = response.data {
@@ -32,7 +32,7 @@ class APIFunctions{
     
 //    func addNote(title:String,note:String,completion:@escaping completion){
 //        
-//        AF.request("http://192.168.100.32:8081/create",method: .post,encoding: URLEncoding.httpBody,headers: ["date":noteDate,"title":title,"note":note]).responseJSON { response  in
+//        AF.request("http://MyIPAddress/create",method: .post,encoding: URLEncoding.httpBody,headers: ["date":noteDate,"title":title,"note":note]).responseJSON { response  in
 //            self.fetchNotes { notes in
 //                completion(notes)
 //            }
@@ -41,7 +41,7 @@ class APIFunctions{
     
 //    func updateNote(id:String,title:String,note:String,completion:@escaping completion){
 //        
-//        AF.request("http://192.168.100.32:8081/update",method: .post,encoding: URLEncoding.httpBody,headers: ["id":id,"date":noteDate,"title":title,"note":note]).responseJSON { response  in
+//        AF.request("http://MyIPAddress/update",method: .post,encoding: URLEncoding.httpBody,headers: ["id":id,"date":noteDate,"title":title,"note":note]).responseJSON { response  in
 //            
 //            self.fetchNotes { notes in
 //                completion(notes)
@@ -51,7 +51,7 @@ class APIFunctions{
     
 //    func deleteNote(id:String,completion:@escaping completion){
 //
-//        AF.request("http://192.168.100.32:8081/delete",method: .post,encoding: URLEncoding.httpBody,headers: ["id":id]).responseJSON { response  in
+//        AF.request("http://MyIPAddress/delete",method: .post,encoding: URLEncoding.httpBody,headers: ["id":id]).responseJSON { response  in
 //
 //            self.fetchNotes { notes in
 //                completion(notes)
@@ -72,7 +72,7 @@ class APIFunctions{
     
     //MARK: Using URLSession
     func addNoteUsingURLSession(title:String,note:String,completion:@escaping completion){
-        let url = URL(string: "http://192.168.100.32:8081/create")!
+        let url = URL(string: "http://MyIPAddress/create")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -95,7 +95,7 @@ class APIFunctions{
     
     func updateNoteUsingURLSession(id:String,title:String,note:String,completion:@escaping completion){
     
-    let url = URL(string: "http://192.168.100.32:8081/update")!
+    let url = URL(string: "http://MyIPAddress/update")!
     var request = URLRequest(url: url)
     request.httpMethod="Post"
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -115,7 +115,7 @@ class APIFunctions{
     
     func deleteNoteUsingURLSession(id:String,completion:@escaping completion){
         
-        let url = URL(string: "http://192.168.100.32:8081/delete")!
+        let url = URL(string: "http://MyIPAddress/delete")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
