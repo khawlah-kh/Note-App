@@ -50,15 +50,15 @@ class APIFunctions{
 //    }
     
 //    func deleteNote(id:String,completion:@escaping completion){
-//        
+//
 //        AF.request("http://192.168.100.32:8081/delete",method: .post,encoding: URLEncoding.httpBody,headers: ["id":id]).responseJSON { response  in
-//            
+//
 //            self.fetchNotes { notes in
 //                completion(notes)
 //            }
 //        }
 //    }
-    
+     
     
     var noteDate : String{
         let dateFormatter = DateFormatter()
